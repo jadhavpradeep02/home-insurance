@@ -1,0 +1,99 @@
+{
+    "users": [{
+            "userId" : "1",
+            "username" : "anilkumar",
+            "password" : "Anil@123",
+            "email": "anilkumar@gmail.com",
+            "dob": "1992-11-10"
+    },{
+        "userId" : "2",
+        "username" : "arunkumar",
+        "password" : "Arun@123",
+        "email": "arunkumar@gmail.com",
+        "dob": "11/08/1995"
+    }],
+    "quotedetailsList": [{
+        "quoteDetailsId": "1",
+        "userId": "2",
+        "residenceType": "Condo",
+        "address": "Flat 401, Tirupati Complex, Sector 7, Kharghar, Panvel - 410208",
+        "residenceUse": "Primary",
+        "marketValue": "40,000",
+        "homeYear": "2018",
+        "squareFootage": "1500",
+        "dwellingType": "1 Story",
+        "roofMaterial": "Concrete",
+        "garageType": "Attached",
+        "noOfBaths": "2",
+        "noHalfBaths": "2",
+        "swimmingPool": "No"
+    },{
+        "quoteDetailsId": "2",
+        "userId": "1",
+        "residence_type": "Condo",
+        "address": "Flat 501, Bhoomi Tower, Sector 36, Kamothe, Panvel - 410209",
+        "residence_use": "Primary",
+        "marketValue": "50,000",
+        "homeYear": "2020",
+        "squareFootage": "2000",
+        "dwellingType": "2 Story",
+        "roofMaterial": "Concrete",
+        "garageType": "Attached",
+        "noOfBaths": "2",
+        "noHalfBaths": "1",
+        "swimmingPool": "No"
+    }],
+    "quotes": [{
+        "id" : "1",
+        "userId": "1",
+        "quoteDetailsId": "2",
+        "monthlyPremium" : "14586",
+        "dwellingCoverage" : "23000",
+        "detachedStructures": "2300",
+        "personalProperty": "13800",
+        "additionalLivingExpense": "4600",
+        "medicalExpense": "$5500",
+        "deductible": "$5600"
+    }, {
+        "id" : "2",
+        "userId": "2",
+        "quoteDetailsId": "1",
+        "monthlyPremium" : "11586",
+        "dwellingCoverage" : "33000",
+        "detachedStructures": "3300",
+        "personalProperty": "14800",
+        "additionalLivingExpense": "6600",
+        "medicalExpense": "$5500",
+        "deductible": "$5800"
+    }, {
+        "id" : "3",
+        "userId": "2",
+        "quoteDetailsId": "3",
+        "monthlyPremium" : "11586",
+        "dwellingCoverage" : "33000",
+        "detachedStructures": "3300",
+        "personalProperty": "14800",
+        "additionalLivingExpense": "6600",
+        "medicalExpense": "$5500",
+        "deductible": "$5800"
+    }],
+    "policies": [{
+        "id" : "1",
+        "quoteId" : "1",
+        "startDate" : "2021-09-25",
+        "endDate" : "2022-09-24",
+        "status" : "Active"
+    },{
+        "id" : "2",
+        "quoteId" : "2",
+        "startDate" : "2021-10-20",
+        "endDate" : "2022-10-19",
+        "status" : "Active"
+    },{
+        "id" : "3",
+        "quoteId" : "1",
+        "startDate" : "2021-10-01",
+        "endDate" : "2022-10-01",
+        "status" : "Active"
+    }]
+}

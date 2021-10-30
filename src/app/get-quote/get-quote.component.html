@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+        <h4>Select User:</h4>
+        <div>
+            <select [(ngModel)]="name" style="width: 50%;" (change)="usernameSelection($event)">
+                <option value="">Select User</option>
+                <option *ngFor="let user of usersList" value='{{user.userId}}'>{{user.username}}</option>
+            </select>
+        </div>
+        <div *ngIf="username_msg" class="alert alert-danger" style="padding:5px; margin:10px;" role="alert">Please select user before submit!</div>
+    </div><br>
+    <div class="row">
+        <h4 class="title">Get Quote</h4>
+
+        <form [formGroup]="locationForm" id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li [ngClass]="step>=1 ? 'active ' : 'inactive'">Location Details</li>
+                <!-- <li [ngClass]="step>=2 ? 'active' : 'inactive'">HomeOwner Information</li> -->
+                <li [ngClass]="step==2 ? 'active' : 'inactive'">Property Details</li>
+            </ul>
+
+            <!-- fieldsets -->
+            <fieldset *ngIf="step == 1">
+                <h2 class="fs-title">Location Details</h2>
+
+                <div class="form-group">
+                    <label for="residenceType">Residence Type: </label><br>
+                    <select formControlName="residenceType">
+                        <option>Select Residence Type</option>
+                        <option *ngFor="let type of residence_types">{{type}}</option>
+                    </select>
+                    <br><br>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address: </label><br>
+                    <input id="address" type="text" formControlName="address"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="residenceUse">Residence Use: </label><br>
+                    <select formControlName="residenceUse">
+                        <option>Select Residence Type</option>
+                        <option *ngFor="let use of residence_use">{{use}}</option>
+                    </select><br><br>
+                </div>
+                <input (click)="cancel()" type="button" name="cancel" class="next action-button" value="Cancel" />
+                <input (click)="next()" type="button" name="next" class="next action-button" value="Next" />
+            </fieldset>
+        </form>
+
+        <form [formGroup]="propertyForm" id="msform">
+            <fieldset *ngIf="step == 2">
+                <h2 class="fs-title">Property Details</h2>
+
+                <div class="form-group">
+                    <label for="marketValue">What is the market value of your home ($)? </label><br>
+                    <input id="marketValue" type="text" formControlName="marketValue" placeholder="$"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="homeYear">What year was your home originally built?</label><br>
+                    <input id="homeYear" type="text" formControlName="homeYear"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="squareFootage">Square footage: </label><br>
+                    <input id="squareFootage" type="text" formControlName="squareFootage"><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="dwellingType">Dwelling style: </label><br>
+                    <select formControlName="dwellingType">
+                        <option>Select Residence Type</option>
+                        <option *ngFor="let style of dwellig_style">{{style}}</option>
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="roofMaterial">Roof material: </label><br>
+                    <select formControlName="roofMaterial">
+                        <option>Select Roof material</option>
+                        <option *ngFor="let material of roof_material">{{material}}</option>
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="garageType">Type of Garage: </label><br>
+                    <select formControlName="garageType">
+                        <option>Select Garage Type</option>
+                        <option *ngFor="let type of garage_types">{{type}}</option>
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="noOfBaths">Number of full baths: </label><br>
+                    <select formControlName="noOfBaths">
+                        <option>Select Number of full baths</option>
+                        <option *ngFor="let nos of bath_numbers">{{nos}}</option>
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="noHalfBaths">Number half baths: </label><br>
+                    <select formControlName="noHalfBaths">
+                        <option>Select Number of half baths</option>
+                        <option *ngFor="let nos of bath_numbers">{{nos}}</option>
+                    </select><br><br>
+                </div>
+                <div class="form-group">
+                    <label for="swimmingPool">Does your home have a swimming pool? </label><br>
+                    <label>
+                        <input type="radio" value="Yes" formControlName="swimmingPool">
+                        <span>Yes</span>
+                    </label>&nbsp;&nbsp;
+                    <label>
+                        <input type="radio" value="No" formControlName="swimmingPool">
+                        <span>No</span>
+                    </label>
+                </div>
+                <input (click)="cancel()" type="button" name="cancel" class="next action-button" value="Cancel" />
+                <input (click)="previous()" type="button" name="previous" class="previous action-button-previous"
+                    value="Previous" />
+                <input (click)="getQuote()" type="submit" name="submit" class="submit action-button" value="Submit" />
+                
+            </fieldset>
+        </form>
+    </div>
+</div>

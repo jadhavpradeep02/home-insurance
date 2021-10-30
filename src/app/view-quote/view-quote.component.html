@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row">
+        <h4>Select User:</h4>
+        <div>
+            <select style="width: 50%;" (change)="usernameSelection($event)">
+                <option value="">Select User</option>
+                <option *ngFor="let user of usersList" value='{{user.userId}}'>{{user.username}}</option>
+            </select>&nbsp;&nbsp;
+            <button (click)="getQuoteDataforUser()">Get Quotes</button>
+        </div>
+    </div><br>
+
+    <div *ngIf="show_details" class="row">
+        <div class="header">
+            <h1>{{title}}</h1>
+        </div>
+
+        <div class="quotes-table">
+            <table class="table">
+                <thead>
+                    <th>Quote Id</th>
+                    <th>Monthly Premium</th>
+                    <th>Dwelling Coverage</th>
+                    <th>Detached Structures</th>
+                    <th>Personal Property</th>
+                    <th>Additional living expense</th>
+                    <th>Medical expense</th>
+                    <th>Deductible</th>
+                    <th>Options</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let quote of quotesData">
+                        <td>{{quote['id']}}</td>
+                        <td>{{quote['monthlyPremium']}}</td>
+                        <td>{{quote['dwellingCoverage']}}</td>
+                        <td>{{quote['detachedStructures']}}</td>
+                        <td>{{quote['personalProperty']}}</td>
+                        <td>{{quote['additionalLivingExpense']}}</td>
+                        <td>{{quote['medicalExpense']}}</td>
+                        <td>{{quote['deductible']}}</td>
+                        <td style="width: 105px;"><button (click)="buyPolicy(quote['id'])">Buy Policy</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

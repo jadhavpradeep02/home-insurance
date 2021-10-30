@@ -1,0 +1,33 @@
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto form p-4">
+                    <h1 class="display-4 py-2 text-truncate title">{{title}}</h1>
+                    <div class="px-2">
+                        <form [formGroup]="policyForm" (ngSubmit)="buyPolicy()" class="justify-content-center">
+                            <div class="form-group">
+                                <label for="username">Quote ID: </label><span style="margin-left: 10px;">{{quoteId}}</span>
+                            </div><br>
+                            <div class="form-group">
+                                <a href="/terms" target="_blank">Read terms and conditions before buying policy</a>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="startDate">Enter Policy Start Date: (Date Format: YYYY-MM-DD)</label>
+                                <input type="text" formControlName="startDate" class="form-control" id="startDate" placeholder="Policy Start Date">
+                                <span style="font-size: 12px;">Policy start date should not be more than 60 days from todays date</span>
+                            </div><br>
+                            <div class="form-group">
+                                <label for="acknowledge">This is to acknowledge that I have read the terms and conditions of the policy</label>
+                                <input type="checkbox" formControlName="acknowledge" class="form-check-input" id="acknowledge"><br>
+                            </div><br>
+
+                            <button type="submit" class="btn btn-primary">Buy Policy</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-primary" (click)="cancel()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
