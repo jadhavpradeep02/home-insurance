@@ -55,5 +55,12 @@ describe('HomeComponentComponent', () => {
       const btn = fixture.debugElement.nativeElement.querySelector('#view_policy');
       expect(btn.innerHTML).toBe('View Policies');
     });
+
+    // it('should navigate', () => {
+    //   const navigateSpy = jest.spyOn(router, 'navigate');
+
+    //   component.registerUser();
+    //   expect(navigateSpy).toHaveBeenCalledWith(['/register-user']);
+    // });
   });
 });

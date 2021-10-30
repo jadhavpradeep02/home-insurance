@@ -2,11 +2,11 @@
     <div class="row">
         <h4>Select User:</h4>
         <div>
-            <select style="width: 50%;" (change)="usernameSelection($event)">
+            <select style="width: 50%;" (change)="usernameSelection($event)" class="select-user">
                 <option value="">Select User</option>
                 <option *ngFor="let user of usersList" value='{{user.userId}}'>{{user.username}}</option>
             </select>&nbsp;&nbsp;
-            <button (click)="getPolicyDataforUser()">Get Quotes</button>
+            <button (click)="getPolicyDataforUser()" id="get_policy">Get Policy</button>
         </div>
     </div><br>
 

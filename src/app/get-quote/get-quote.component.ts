@@ -20,7 +20,6 @@ export class GetQuoteComponent implements OnInit {
   step = 1;
   usersList : any = [];
   quotedetailsList : any = [];
-  name: string = "";
   selected_user_id: number;
   username_msg: boolean = false;
   residence_types: any = ['Single-Family Home', 'Condo', 'Townhouse', 'Rowhouse', 'Duplex', 'Apartment'];

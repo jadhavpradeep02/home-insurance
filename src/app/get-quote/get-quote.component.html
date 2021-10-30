@@ -2,7 +2,7 @@
     <div class="row">
         <h4>Select User:</h4>
         <div>
-            <select [(ngModel)]="name" style="width: 50%;" (change)="usernameSelection($event)">
+            <select style="width: 50%;" (change)="usernameSelection($event)">
                 <option value="">Select User</option>
                 <option *ngFor="let user of usersList" value='{{user.userId}}'>{{user.username}}</option>
             </select>

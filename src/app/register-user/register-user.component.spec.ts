@@ -96,8 +96,8 @@ describe('RegisterUserComponent', () => {
       expect(component.userForm.valid).toBeFalsy();
       component.userForm.controls["username"].setValue("ashok");
       component.userForm.controls["password"].setValue("Ashok@123");
-      //component.userForm.controls["confirmPassword"].setValue("Ashok@123");
-      component.userForm.controls["emai"].setValue("ashokumar@gmail.com");
+      component.userForm.controls["confirmPassword"].setValue("Ashok@123");
+      component.userForm.controls["email"].setValue("ashokumar@gmail.com");
       component.userForm.controls["dob"].setValue("11-10-1994");
 
       expect(component.userForm.valid).toBeTruthy();
