@@ -23,12 +23,10 @@ export class ViewQuoteComponent implements OnInit {
     this.quoteService.getQuoteData().subscribe(data => {
       this.quotesData = data;
       this.backupData = data;
-      console.log("this.quotesData", this.quotesData);
     });
 
-    this.userService.currentMessage.subscribe(data => {
+    this.userService.getUsersData().subscribe(data => {
       this.usersList = data;
-      console.log("this.usersList", this.usersList);
     });
   }
 
@@ -42,7 +40,6 @@ export class ViewQuoteComponent implements OnInit {
       this.quotesData = this.quotesData.filter(data => {
         return data.userId == this.user_id;
       });
-      console.log(this.quotesData);
       this.show_details = true;
     } else {
       this.show_details = false;

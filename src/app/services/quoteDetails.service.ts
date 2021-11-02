@@ -18,7 +18,7 @@ const postOptions = {
 export class QuoteDetailsService {
   public static BaseUrl = "http://localhost:3000/";
 
-  private data = {};
+  private data : any = [];
   private messageSource = new BehaviorSubject(this.data);
   currentMessage = this.messageSource.asObservable();
   

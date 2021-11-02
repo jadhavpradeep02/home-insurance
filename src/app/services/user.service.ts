@@ -18,7 +18,7 @@ const postOptions = {
 export class UserService {
   public static BaseUrl = "http://localhost:3000/";
 
-  private data = {};
+  private data : any = [];
   private messageSource = new BehaviorSubject(this.data);
   currentMessage = this.messageSource.asObservable();
   
@@ -26,12 +26,13 @@ export class UserService {
   }
 
   getUsersData() {
-    return this.http.get(UserService.BaseUrl+'users', httpOptions).pipe(map((response) => {
-      this.data = response;
-      this.messageSource.next(this.data);
-      console.log(this.data);
-      return this.data;
-    }))
+    // return this.http.get(UserService.BaseUrl+'users', httpOptions).pipe(map((response) => {
+    //   this.data = response;
+    //   //this.messageSource.next(this.data);
+    //   console.log(this.data);
+    //   return this.data;
+    // }))
+    return this.http.get(UserService.BaseUrl+'users', httpOptions).pipe(map((response) => response))
   }
 
   postUsersdata(data: any){

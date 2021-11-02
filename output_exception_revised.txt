@@ -1,0 +1,2 @@
+viewquotecomponentExceptionShouldBeCheckQuotesApi=true
+viewpolicycomponentExceptionShouldBeCheckQuotesApi=true

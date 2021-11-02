@@ -1,1 +1,3 @@
+buypolicycomponentBusinessShouldSubmitForm=true
 registerusercomponentBusinessShouldSubmitForm=true
+getquotecomponentBusinessShouldSubmitForm=true

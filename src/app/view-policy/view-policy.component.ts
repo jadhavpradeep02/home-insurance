@@ -24,12 +24,12 @@ export class ViewPolicyComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private policyService: PolicyService, private quoteService: QuoteService) { }
 
   ngOnInit(): void {
-    this.userService.currentMessage.subscribe(data => {
+    this.userService.getUsersData().subscribe(data => {
       this.usersList = data;
       this.usersListBkp = data;
     })
 
-    this.quoteService.currentMessage.subscribe(data => {
+    this.quoteService.getQuoteData().subscribe(data => {
       this.quotesData = data;
       this.quotesDataBkp = data;
     });

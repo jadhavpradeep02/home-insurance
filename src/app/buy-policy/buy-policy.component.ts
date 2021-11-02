@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PolicyService } from '../services/policy.service';
+
+export class Policy {
+  constructor(
+    public startDate: string,
+    public acknowledge: boolean
+  ) { }
+}
 
 @Component({
   selector: 'app-buy-policy',
@@ -10,6 +17,7 @@ import { PolicyService } from '../services/policy.service';
 })
 export class BuyPolicyComponent implements OnInit {
 
+  @Output() policydata = new EventEmitter<Policy>();
   title: string = "Buy Policy ESign";
   quoteId: any;
   policyForm!: FormGroup;
@@ -18,9 +26,7 @@ export class BuyPolicyComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private policyService: PolicyService) { }
 
   ngOnInit(): void {
-    this.quoteId = this.route.snapshot.paramMap.get('id')
-    console.log(this.quoteId);
-
+    this.quoteId = this.route.snapshot.paramMap.get('id');
     this.policyForm = this.fb.group({
       startDate: ["", [Validators.required]],
       acknowledge: ["", [Validators.required]]
@@ -29,6 +35,15 @@ export class BuyPolicyComponent implements OnInit {
     this.policyService.getPolicyData().subscribe(data => {
       this.policies = data;
     })
+  }
+
+  onSubmit() {
+    this.policydata.emit(
+      new Policy(
+        this.policyForm.value.startDate,
+        this.policyForm.value.acknowledge
+      )
+    );
   }
 
   buyPolicy() {

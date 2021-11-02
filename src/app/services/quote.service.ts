@@ -18,7 +18,7 @@ const postOptions = {
 export class QuoteService {
   public static BaseUrl = "http://localhost:3000/";
 
-  private data = {};
+  private data : any = [];
   private messageSource = new BehaviorSubject(this.data);
   currentMessage = this.messageSource.asObservable();
   
@@ -26,11 +26,12 @@ export class QuoteService {
   }
 
   getQuoteData() {
-    return this.http.get(QuoteService.BaseUrl+'quotes', httpOptions).pipe(map((response) => {
-      this.data = response;
-      this.messageSource.next(this.data);
-      return this.data;
-    }))
+    // return this.http.get(QuoteService.BaseUrl+'quotes', httpOptions).pipe(map((response) => {
+    //   this.data = response;
+    //   this.messageSource.next(this.data);
+    //   return this.data;
+    // }))
+    return this.http.get(QuoteService.BaseUrl+'quotes', httpOptions).pipe(response => response);
   }
 
   postQuoteData(data: any){
@@ -38,7 +39,6 @@ export class QuoteService {
   }
 
   updateData(data) {
-    console.log(data);
     this.messageSource.next(data);
   }
 }

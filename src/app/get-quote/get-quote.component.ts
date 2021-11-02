@@ -1,8 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { QuoteDetailsService } from '../services/quoteDetails.service';
+
+export class Location {
+  constructor(
+    public residenceType: string,
+    public address: string,
+    public residenceUse: string
+  ) { }
+}
+
+export class Property {
+  constructor(
+    public marketValue: string,
+    public homeYear: string,
+    public squareFootage: string,
+    public dwellingType: string,
+    public roofMaterial: string,
+    public garageType: string,
+    public noOfBaths: string,
+    public noHalfBaths: string,
+    public swimmingPool: string,
+  ) { }
+}
 
 @Component({
   selector: 'app-get-quote',
@@ -11,6 +33,9 @@ import { QuoteDetailsService } from '../services/quoteDetails.service';
 })
 export class GetQuoteComponent implements OnInit {
 
+  @Output() locationDate = new EventEmitter<Location>();
+  @Output() propertyData = new EventEmitter<Property>();
+  title: string = "Get Quote";
   locationForm!: FormGroup;
   //homeownerForm!: FormGroup;
   propertyForm!: FormGroup;
@@ -34,12 +59,12 @@ export class GetQuoteComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentMessage.subscribe(data => {
       this.usersList = data;
-      console.log("this.usersData", this.usersList);
+      // console.log("this.usersData", this.usersList);
     });
 
     this.quoteDetailsService.getQuoteDetaislData().subscribe(data => {
       this.quotedetailsList = data;
-      console.log("this.quotedetailsList", this.quotedetailsList);
+      // console.log("this.quotedetailsList", this.quotedetailsList);
     })
 
     this.locationForm = this.formBuilder.group({
@@ -68,6 +93,29 @@ export class GetQuoteComponent implements OnInit {
       noHalfBaths: ['',Validators.required],
       swimmingPool: ['',Validators.required]
     });
+  }
+
+  onSubmit() {
+    this.locationDate.emit(
+      new Location(
+        this.locationForm.value.residenceType,
+        this.locationForm.value.address,
+        this.locationForm.value.residenceUse
+      )
+    );
+    this.propertyData.emit(
+      new Property(
+        this.propertyForm.value.marketValue,
+        this.propertyForm.value.homeYear,
+        this.propertyForm.value.squareFootage,
+        this.propertyForm.value.dwellingType,
+        this.propertyForm.value.roofMaterial,
+        this.propertyForm.value.garageType,
+        this.propertyForm.value.noOfBaths,
+        this.propertyForm.value.noHalfBaths,
+        this.propertyForm.value.swimmingPool
+      )
+    );
   }
 
   cancel() {
